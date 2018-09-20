@@ -1,0 +1,11 @@
+a:5:{i:0;s:76:"Could not open export_file_1537414499.xlsx for reading! File does not exist.";i:1;s:1338:"#0 C:\xampp\htdocs\Magento\lib\PHPExcel\PHPExcel\IOFactory.php(269): PHPExcel_Reader_Excel2007->canRead('export_file_153...')
+#1 C:\xampp\htdocs\Magento\lib\PHPExcel\PHPExcel\IOFactory.php(191): PHPExcel_IOFactory::createReaderForFile('export_file_153...')
+#2 C:\xampp\htdocs\Magento\app\code\local\Mkg\Exporter\controllers\Adminhtml\Exporter\IndexController.php(162): PHPExcel_IOFactory::load('export_file_153...')
+#3 C:\xampp\htdocs\Magento\app\code\local\Mkg\Exporter\controllers\Adminhtml\Exporter\IndexController.php(49): Mkg_Exporter_Adminhtml_Exporter_IndexController->_exportAll()
+#4 C:\xampp\htdocs\Magento\app\code\core\Mage\Core\Controller\Varien\Action.php(418): Mkg_Exporter_Adminhtml_Exporter_IndexController->exportAction()
+#5 C:\xampp\htdocs\Magento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('export')
+#6 C:\xampp\htdocs\Magento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#7 C:\xampp\htdocs\Magento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#8 C:\xampp\htdocs\Magento\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#9 C:\xampp\htdocs\Magento\index.php(83): Mage::run('', 'store')
+#10 {main}";s:3:"url";s:84:"/Magento/index.php/admin/exporter_index/export/key/5b03bea54cdbf394e7b194d7732be77b/";s:11:"script_name";s:18:"/Magento/index.php";s:4:"skin";s:5:"admin";}

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <!--<action method="addJs"><script>mkg/importer/importer.js</script></action>-->
+        </reference>
+        <!--<block type="" name="root" output="toHtml" template="importer/run.phtml" />-->
+    </default>
+    <adminhtml_index_edit>
+        <reference name="left">
+            <!--<block type="adminhtml/store_switcher" name="store_switcher" before="-"></block>-->
+            <!--<block type="support/adminhtml_switcher" name="support_switcher" template="support/switcher.phtml"></block>-->
+            <block type="adminhtml/store_switcher" name="support_switcher" template="support/switcher.phtml"></block>
+        </reference>
+    </adminhtml_index_edit>
+    <adminhtml_importer_product_run>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>modal/bootstrap.modal.min.css</name></action>
+        </reference>
+        <reference name="content">
+            <remove name="header" />
+            <remove name="menu" />
+            <remove name="footer" />
+            <remove name="notifications" />
+            <block type="core/template" name="sidesupport">
+                <action method="setTemplate">
+                    <template>importer/run.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_importer_product_run>
+    <adminhtml_importer_product_export>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>modal/bootstrap.modal.min.css</name></action>
+        </reference>
+        <reference name="content">
+            <remove name="header" />
+            <remove name="menu" />
+            <remove name="footer" />
+            <remove name="notifications" />
+            <block type="core/template" name="sidesupport">
+                <action method="setTemplate">
+                    <template>importer/run.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_importer_product_export>
+</layout><!---->

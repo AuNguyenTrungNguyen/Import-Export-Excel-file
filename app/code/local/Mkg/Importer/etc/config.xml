@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mkg_Importer>
+            <version>0.1.1</version>
+        </Mkg_Importer>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Mkg_Importer before="Mage_Adminhtml">Mkg_Importer_Adminhtml</Mkg_Importer>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<catalog>
+                <children>
+        			<importer module="importer">
+						<title>Importer</title>
+						<sort_order>1000</sort_order>
+                        <children>
+                            <import_fix>
+                                <title>Fix Import Files</title>
+                                <sort_order>999</sort_order>
+                                <action>adminhtml/importer_fix/new</action>
+                            </import_fix>
+                        </children>
+                        <children>
+                            <import_attribute>
+                                <title>Import Attribute</title>
+                                <sort_order>1000</sort_order>
+                                <action>adminhtml/importer_index/new</action>
+                            </import_attribute>
+                        </children>
+                        <children>
+                            <import_product>
+                                <title>Import Product</title>
+                                <sort_order>1001</sort_order>
+                                <action>adminhtml/importer_product/new</action>
+                            </import_product>
+                        </children>
+                        <children>
+                            <import_car>
+                                <title>Import Car</title>
+                                <sort_order>1002</sort_order>
+                                <action>adminhtml/importer_car/new</action>
+                            </import_car>
+                        </children>
+                        <children>
+                            <import_brand>
+                                <title>Import Brands</title>
+                                <sort_order>1003</sort_order>
+                                <action>adminhtml/importer_brand/new</action>
+                            </import_brand>
+                        </children>
+					</importer>
+                </children>
+             </catalog>
+		</menu>
+		<acl>
+			<resources>
+<all>
+                <title>Allow Everything</title>
+            </all>
+                <admin>
+                    <children>
+                        <catalog>
+                              <children>
+        			<importer module="importer">
+						<title>Importer</title>
+						<sort_order>1000</sort_order>
+                        <children>
+                            <import_fix>
+                                <title>Fix Import Files</title>
+                                <sort_order>999</sort_order>
+
+                            </import_fix>
+                        </children>
+                        <children>
+                            <import_attribute>
+                                <title>Import Attribute</title>
+                                <sort_order>1000</sort_order>
+
+                            </import_attribute>
+                        </children>
+                        <children>
+                            <import_product>
+                                <title>Import Product</title>
+                                <sort_order>1001</sort_order>
+
+                            </import_product>
+                        </children>
+                        <children>
+                            <import_car>
+                                <title>Import Car</title>
+                                <sort_order>1002</sort_order>
+                            </import_car>
+                        </children>
+					</importer>
+                </children>
+                        </catalog>
+                    </children>
+                </admin>
+            </resources>
+		</acl>
+		<layout>
+			<updates>
+				<importer>
+					<file>importer.xml</file>
+				</importer>
+			</updates>
+		</layout>
+		<translate>
+            <modules>
+                <Mkg_Support>
+                    <files>
+                        <default>Mkg_Importer.csv</default>
+                    </files>
+                </Mkg_Support>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <routers>
+            <carfilter>
+                <use>standard</use>
+                <args>
+                    <module>importer</module>
+                    <frontName>importer</frontName>
+                </args>
+            </carfilter>
+        </routers>
+    </frontend>
+    <global>
+        <resources>
+            <importer_setup>
+                <setup>
+                    <module>Mkg_Importer</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </importer_setup>
+            <importer_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </importer_write>
+            <importer_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </importer_read>
+        </resources>
+        <blocks>
+            <importer>
+                <class>Mkg_Importer_Block</class>
+            </importer>
+            <!--<adminhtml>-->
+                    <!--<rewrite>-->
+                        <!--<store_switcher>-->
+                            <!--Mkg_Support_Block_Switcher-->
+                        <!--</store_switcher>-->
+                    <!--</rewrite>-->
+            <!--</adminhtml>-->
+        </blocks>
+        <helpers>
+            <importer>
+                <class>Mkg_Importer_Helper</class>
+            </importer>
+        </helpers>
+    </global>
+</config>

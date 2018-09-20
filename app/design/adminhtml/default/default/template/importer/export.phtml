@@ -1,0 +1,114 @@
+<script type="text/javascript">
+    function export_data(){
+        var url = '<?php echo $this->getUrl('*/*/export') ?>';
+        var sku = document.getElementById('sku').value;
+        if(sku != ''){
+            url += "sku/" + sku + "/";
+        }
+        var att_set = document.getElementById('attribute_set');
+        att_set_id = att_set.options[att_set.selectedIndex].value;
+        if(att_set_id != 0){
+            url += "atts/" + att_set.options[att_set.selectedIndex].value + "/";
+        }else{
+            alert("please choose an attribute set !");
+            return;
+        }
+        var product_type = document.getElementById('product_type');
+        product_type_id = product_type.options[product_type.selectedIndex].value;
+        if(product_type_id != 0){
+            url += "prot/" + product_type_id + "/";
+        }
+        var status = document.getElementById('status');
+        status_id = status.options[status.selectedIndex].value;
+        if(status_id != 0){
+            url += 'stt/' + status_id + "/";
+        }
+        var visibility = document.getElementById('visibility');
+        visibility_id = visibility.options[visibility.selectedIndex].value;
+        if(visibility_id != 0){
+            url += "vis/" + visibility_id + "/";
+        }
+
+        window.open(url);
+    }
+</script>
+<div id="product_tabs_form_section_content"><div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Export Data'); ?></h4>
+            <div class="form-buttons"></div>
+        </div>
+        <div class="fieldset " id="importer_form">
+            <div class="hor-scroll">
+                <table cellspacing="0" class="form-list">
+                    <tbody>
+                    <tr>
+                        <td class="label"><label for="sku"><?php echo $this->__('SKU'); ?> </label></td>
+                        <td class="value">
+                            <input id="sku" name="sku" value="" type="text" class="input-text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="attribute_set"><?php echo $this->__('Attribute Set'); ?> <span class="required">*</span></label></td>
+                        <td class="value">
+                            <select id="attribute_set" name="attribute_set" class="input-text required-entry">
+                                <?php $attributeSet = $this->getAttributeSet(); ?>
+                                <?php foreach($attributeSet as $id => $value): ?>
+                                    <option value="<?php echo $id; ?>"><?php echo $value ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="product_type"><?php echo $this->__('Product Type'); ?> </label></td>
+                        <td class="value">
+                            <select id="product_type" name="product_type" class="input-text">
+                                <?php $productType = array_merge(array('0' => 'Any Type'),
+                                    Mage::getModel('catalog/product_type')->getOptionArray()); ?>
+                                <?php foreach($productType as $id => $value): ?>
+                                    <option value="<?php echo $id ?>"><?php echo $value; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="status"><?php echo $this->__('Status'); ?> </label></td>
+                        <td class="value">
+                            <select id="status" name="status" class="input-text">
+                                <option value="0">Any Status</option>
+                                <option value="1">Enabled</option>
+                                <option value="2">Disabled</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="visibility"><?php echo $this->__('Visibility'); ?> </label></td>
+                        <td class="value">
+                            <select id="visibility" name="visibility" class="input-text">
+                                <option value="0">Any Visibility</option>
+                                <option value="1">Not Visible Individually</option>
+                                <option value="2">Catalog</option>
+                                <option value="3">Search</option>
+                                <option value="4">Catalog, Search</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button id="" title="Export Data" type="button" class="scalable save" onclick="export_data(true)" style="">
+                                <span>
+                                    <span>
+                                        <span><?php echo $this->__('Export Data'); ?></span>
+                                    </span>
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+
+</style>

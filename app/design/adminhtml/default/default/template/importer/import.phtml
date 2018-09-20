@@ -1,0 +1,52 @@
+<script type="text/javascript">
+    function runProfile(popup)
+    {
+        var url = '<?php echo $this->getUrl('*/*/run') ?>';
+        var file = getImportFile();
+        if(!file){
+            alert("Please choose file");
+            return false;
+        }
+        if(document.getElementById('image-replace').checked){
+            url += 'image-replace/'+document.getElementById('image-replace').checked+"/";
+        }
+        url += 'file/'+file+"/";
+
+        window.open(url);
+    }
+
+
+    function getImportFile(){
+        var file = document.getElementById('files');
+        return file[file.selectedIndex].value;
+    }
+
+    /*$.ajax({
+        type: "POST",
+        url: url,
+        param: '{}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            // nothing needed here
+        }
+    })*/
+
+</script>
+    <div id="file_list" style="">
+    <select id="files" name="files">
+        <option value="">Select a file</option>
+        <?php if ($files = $this->getImportedFiles()) :
+            foreach ($files as $file) : ?>
+                <option value=<?php echo $file ?>><?php echo $file ?></option>
+            <?php   endforeach;
+        endif; ?>
+    </select>
+    <br />
+        <input type="checkbox" id="image-replace" /><label for="Replace associate products"><?php echo $this->__('Replace Image Products'); ?></label>
+    <!--<input type="checkbox" id="delete-old-image" style="margin:5px"/><label for="delete-old-image">Delete all images of product before import (! Be careful)</label>
+    <br />&nbsp;-->
+</div>
+
+<?php echo $this->getRunButtonHtml() ?><br/>

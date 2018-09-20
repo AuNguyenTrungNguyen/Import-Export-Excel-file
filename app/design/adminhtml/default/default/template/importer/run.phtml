@@ -1,0 +1,12 @@
+<style type="text/css">
+    .message{
+        width: 100%;
+        border-bottom: 1px #79AD36 solid;
+    }
+</style>
+<?php $response = Mage::registry('response'); ?>
+<?php foreach($response as $item): ?>
+<div class="container">
+    <div class="message"><?php echo $item; ?></div>
+</div>
+<?php endforeach; ?>
