@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Nhut
- * Date: 5/24/16
- * Time: 8:51 AM
- */
 
 class Mkg_Exporter_Block_Adminhtml_Attribute_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget_Form
 {
@@ -19,7 +13,7 @@ class Mkg_Exporter_Block_Adminhtml_Attribute_Edit_Tab_Form extends Mage_Adminhtm
             'label'     => Mage::helper('exporter')->__('Export Type'),
             'required'  => true,
             'name'      => 'export_type',
-            'values'    => array(1 => 'Export All', 2 => 'Export Last Group'),
+            'values'    => array(1 => 'Export all group user created', 2 => 'Export last group'),
             'note'      => ' ',
         ));
 

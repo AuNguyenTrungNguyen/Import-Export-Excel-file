@@ -1,29 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Nhut
- * Date: 5/24/16
- * Time: 8:49 AM
- */
 
 include Mage::getBaseDir('lib') . DS . 'PHPExcel' . DS . 'PHPExcel.php';
-
 
 class Mkg_Exporter_Adminhtml_Exporter_IndexController extends Mage_Adminhtml_Controller_action
 {
 
-    protected $_entityTypeId;
-
-    public function preDispatch()
-    {
-        parent::preDispatch();
-        $this->_entityTypeId = Mage::getModel('eav/entity')->setType(Mage_Catalog_Model_Product::ENTITY)->getTypeId();
-    }
+//    protected $_entityTypeId;
+//
+//    public function preDispatch()
+//    {
+//        parent::preDispatch();
+//        $this->_entityTypeId = Mage::getModel('eav/entity')->setType(Mage_Catalog_Model_Product::ENTITY)->getTypeId();
+//    }
 
     protected function _initAction()
     {
         $this->loadLayout()
-            ->_setActiveMenu('catalog/exporter/export_attribute')
+            ->_setActiveMenu('catalog/exporter')
             ->_addBreadcrumb(Mage::helper('adminhtml')->__('Items Manager'), Mage::helper('adminhtml')->__('Item Manager'));
 
         return $this;
@@ -50,9 +43,9 @@ class Mkg_Exporter_Adminhtml_Exporter_IndexController extends Mage_Adminhtml_Con
             $check = $this->_exportFile($dataExport, $type);
 
             if ($check === true) {
-                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('exporter')->__('Export all attributes is success!'));
+                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('exporter')->__('Export attribute(s) in all group user created success!'));
             } else {
-                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('exporter')->__('Export file is error!'));
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('exporter')->__('Export file error!'));
             }
 
         } elseif ($type == 2) {
@@ -60,19 +53,18 @@ class Mkg_Exporter_Adminhtml_Exporter_IndexController extends Mage_Adminhtml_Con
             $check = $this->_exportFile($dataExport, $type);
 
             if ($check === true) {
-                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('exporter')->__('Export all attributes in last group is success!'));
+                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('exporter')->__('Export attribute(s) in last group success.'));
             } else {
                 Mage::getSingleton('adminhtml/session')->addError(Mage::helper('exporter')->__('Export file is error!'));
             }
         }
-
         $this->_redirect('*/*/edit');
     }
 
     public function editAction()
     {
         $this->loadLayout();
-        $this->_setActiveMenu('exporter/items');
+        $this->_setActiveMenu('catalog/exporter');
 
         $this->_addBreadcrumb(Mage::helper('adminhtml')->__('Item Manager'), Mage::helper('adminhtml')->__('Item Manager'));
         $this->_addBreadcrumb(Mage::helper('adminhtml')->__('Item News'), Mage::helper('adminhtml')->__('Item News'));
@@ -143,10 +135,8 @@ class Mkg_Exporter_Adminhtml_Exporter_IndexController extends Mage_Adminhtml_Con
                         $dataExport[] = $item;
                     }
                 }
-
             }
         }
-
         return $dataExport;
     }
 
@@ -210,9 +200,9 @@ class Mkg_Exporter_Adminhtml_Exporter_IndexController extends Mage_Adminhtml_Con
         }
 
         $fileName = 'File_';
-        if ($type === 1){
+        if ($type === "1"){
             $fileName = 'Export-all-attribute-set_';
-        }elseif ($type === 2){
+        }elseif ($type === "2"){
             $fileName = 'Export-last-group-set_';
         }
 

@@ -28,75 +28,74 @@
                 </children>
             </catalog>
         </menu>
-        <acl>
-            <resources>
-                <all>
-                    <title>Allow Everything</title>
-                </all>
-                <admin>
-                    <children>
-                        <catalog>
-                            <children>
-                                <exorter module="exporter">
-                                    <title>Exporter</title>
-                                    <sort_order>1010</sort_order>
-
-                                </exorter>
-                            </children>
-                        </catalog>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
-        <layout>
-            <updates>
-                <importer>
-                    <file>exporter.xml</file>
-                </importer>
-            </updates>
-        </layout>
-        <translate>
-            <modules>
-                <Mkg_Support>
-                    <files>
-                        <default>Mkg_Exporter.csv</default>
-                    </files>
-                </Mkg_Support>
-            </modules>
-        </translate>
+        <!--<acl>-->
+            <!--<resources>-->
+                <!--<all>-->
+                    <!--<title>Allow Everything</title>-->
+                <!--</all>-->
+                <!--<admin>-->
+                    <!--<children>-->
+                        <!--<catalog>-->
+                            <!--<children>-->
+                                <!--<exorter module="exporter">-->
+                                    <!--<title>Exporter</title>-->
+                                    <!--<sort_order>1010</sort_order>-->
+                                <!--</exorter>-->
+                            <!--</children>-->
+                        <!--</catalog>-->
+                    <!--</children>-->
+                <!--</admin>-->
+            <!--</resources>-->
+        <!--</acl>-->
+        <!--<layout>-->
+            <!--<updates>-->
+                <!--<importer>-->
+                    <!--<file>exporter.xml</file>-->
+                <!--</importer>-->
+            <!--</updates>-->
+        <!--</layout>-->
+        <!--<translate>-->
+            <!--<modules>-->
+                <!--<Mkg_Support>-->
+                    <!--<files>-->
+                        <!--<default>Mkg_Exporter.csv</default>-->
+                    <!--</files>-->
+                <!--</Mkg_Support>-->
+            <!--</modules>-->
+        <!--</translate>-->
     </adminhtml>
-    <frontend>
-        <routers>
-            <carfilter>
-                <use>standard</use>
-                <args>
-                    <module>exporter</module>
-                    <frontName>exporter</frontName>
-                </args>
-            </carfilter>
-        </routers>
-    </frontend>
+    <!--<frontend>-->
+        <!--<routers>-->
+            <!--<carfilter>-->
+                <!--<use>standard</use>-->
+                <!--<args>-->
+                    <!--<module>exporter</module>-->
+                    <!--<frontName>exporter</frontName>-->
+                <!--</args>-->
+            <!--</carfilter>-->
+        <!--</routers>-->
+    <!--</frontend>-->
     <global>
-        <resources>
-            <exporter_setup>
-                <setup>
-                    <module>Mkg_Exporter</module>
-                </setup>
-                <connection>
-                    <use>core_setup</use>
-                </connection>
-            </exporter_setup>
-            <exporter_write>
-                <connection>
-                    <use>core_write</use>
-                </connection>
-            </exporter_write>
-            <exporter_read>
-                <connection>
-                    <use>core_read</use>
-                </connection>
-            </exporter_read>
-        </resources>
+        <!--<resources>-->
+            <!--<exporter_setup>-->
+                <!--<setup>-->
+                    <!--<module>Mkg_Exporter</module>-->
+                <!--</setup>-->
+                <!--<connection>-->
+                    <!--<use>core_setup</use>-->
+                <!--</connection>-->
+            <!--</exporter_setup>-->
+            <!--<exporter_write>-->
+                <!--<connection>-->
+                    <!--<use>core_write</use>-->
+                <!--</connection>-->
+            <!--</exporter_write>-->
+            <!--<exporter_read>-->
+                <!--<connection>-->
+                    <!--<use>core_read</use>-->
+                <!--</connection>-->
+            <!--</exporter_read>-->
+        <!--</resources>-->
         <blocks>
             <exporter>
                 <class>Mkg_Exporter_Block</class>
